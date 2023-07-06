@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-nati
 import { TextInput } from 'react-native-gesture-handler';
 
 export default function App({ navigation }) {
+
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}><Text style={styles.title}>검색</Text>
@@ -15,25 +16,6 @@ export default function App({ navigation }) {
           placeholder="가게 이름을 입력해주세요."
         /></View>
         <ScrollView style={styles.listContainer}>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>그랬구나</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>우리 엄마</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>재미있었구나</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>그랬구나</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>그랬구나</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>막굴려도</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>상관 없었구나</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>그랬구나</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>그랬구나</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>그랬구나</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>그랬구나</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>그랬구나</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>그랬구나</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>그랬구나</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>그랬구나</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>그랬구나</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>그랬구나</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>그랬구나</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>그랬구나</Text></TouchableOpacity>
           <TouchableOpacity style={styles.list}><Text style={styles.text}>그랬구나</Text></TouchableOpacity>
         </ScrollView>
       </View>
