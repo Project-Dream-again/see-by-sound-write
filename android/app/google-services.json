@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "474339573185",
+    "firebase_url": "https://with-touch-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "with-touch",
+    "storage_bucket": "with-touch.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:474339573185:android:36b3a6d80cb2fc5c428340",
+        "android_client_info": {
+          "package_name": "me.imnyang.seebysoundwrite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "474339573185-9980a1trh6jbvg470r7nm87dagds9lvl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGZDMjgVvcn1iZv5-e9O7QcCi8TZrWKiM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "474339573185-9980a1trh6jbvg470r7nm87dagds9lvl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

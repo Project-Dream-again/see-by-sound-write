@@ -1,26 +1,40 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 export default function App({ navigation }) {
+  //https://see-by-sound-api.onrender.com/upload?name={name}&description={description}
 
   return (
     <View style={styles.container}>
-      <View style={styles.titleContainer}><Text style={styles.title}>검색</Text>
+      <View style={styles.titleContainer}><Text style={styles.title}>추가</Text>
         <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          autoCapitalize='none'
-          enterKeyHint='search'
-          inputMode='search'
-          placeholder="가게 이름을 입력해주세요."
-        /></View>
-        <ScrollView style={styles.listContainer}>
-          <TouchableOpacity style={styles.list}><Text style={styles.text}>그랬구나</Text></TouchableOpacity>
-        </ScrollView>
+          <TextInput
+            style={styles.input}
+            autoCapitalize='none'
+            autoComplete='name'
+            enterKeyHint='done'
+            inputMode='text'
+            placeholder="물건의 이름을 입력해주세요."
+          />
+          <TextInput
+            style={styles.input2}
+            autoCapitalize='none'
+            autoComplete='none'
+            enterKeyHint='done'
+            inputMode='text'
+            placeholder="물건의 이름을 설명해주세요."
+          />
+        </View>
       </View>
 
       <View style={styles.buttonContainer}>
+        <TouchableOpacity
+            style={styles.button2}
+            onPress={() => Alert.alert("테스트")}
+          >
+          <Text style={styles.buttonText}>✅</Text>
+        </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('Home')}
@@ -52,7 +66,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonContainer: {
-    width: 50,
+    width: 100,
     height: '0%',
     textAlign: 'center',
     textAlignVertical: 'center',
@@ -62,6 +76,7 @@ const styles = StyleSheet.create({
     verticalAlign: 'middle',
     textAlign: 'center',
     textAlignVertical: 'center',
+    flexDirection: 'row',
   },
   inputContainer: {
     marginTop: 20,
@@ -87,11 +102,20 @@ const styles = StyleSheet.create({
     marginTop: 25
   },
   button: {
+    width: "50%",
+    height: 50,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 100,
+    padding: 10,
+    marginLeft: 10
+  },
+  button2: {
     width: "100%",
     height: 50,
     backgroundColor: '#FFFFFF',
     borderRadius: 100,
     padding: 10,
+    marginRight: 10,
   },
   buttonText: {
     width: '100%',
@@ -111,18 +135,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderColor: 'transparent'
   },
-  list: {
-    height: 45,
+  input2: {
+    height: 240,
     width: 300,
-    marginVertical: 7,
+    margin: 12,
     borderWidth: 1,
     padding: 10,
     borderRadius: 20,
-    backgroundColor: '#FFBDBD',
+    backgroundColor: '#fff',
     borderColor: 'transparent',
-    justifyContent: 'center',
-    verticalAlign: 'middle',
-    textAlignVertical: 'center',
+    textAlignVertical: 'top',
   },
   text: {
     fontSize: 18,

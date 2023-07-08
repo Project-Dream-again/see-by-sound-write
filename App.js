@@ -6,7 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack"; // 스택 네비
 
 // 각각 보여줄 화면들 불러오기
 import Home from "./screens/Home";
-import Search from "./screens/Search";
+import Add from "./screens/Add";
 
 // 스택 네비게이션 만들기
 const Stack = createStackNavigator();
@@ -29,7 +29,7 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} options={{
           headerShown: false,
         }} />
-        <Stack.Screen name="Search" component={Search} options={{
+        <Stack.Screen name="Add" component={Add} options={{
           headerShown: false,
         }} />
       </Stack.Navigator>

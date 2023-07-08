@@ -8,9 +8,9 @@ export default function App({ navigation }) {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('Search')}
+          onPress={() => navigation.navigate('Add')}
         >
-          <Text style={styles.buttonText}>🔍</Text>
+          <Text style={styles.buttonText}>➕</Text>
         </TouchableOpacity>
       </View>
       <StatusBar style="auto" />
