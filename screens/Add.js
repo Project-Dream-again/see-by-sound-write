@@ -1,39 +1,84 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Alert, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import React, { useState, useEffect } from 'react';
 import NfcManager, { Ndef, NfcTech } from 'react-native-nfc-manager';
+import DropDownPicker from "react-native-dropdown-picker";
 import axios from 'axios';
 
 const baseUrl = 'https://see-by-sound-api.run.goorm.site'
 
 export default function App({ navigation }) {
+  const [barcode, setbarcode] = useState('');
   const [name, setname] = useState('');
   const [des, setdes] = useState('');
+  const [price, setprice] = useState('');
+  const [what, setwhat] = useState('');
+  const [kcal, setkcal] = useState('');
+  const [sodium, setsodium] = useState('');
+  const [carbohydrates, setcarbohydrates] = useState('');
+  const [sugars, setsugars] = useState('');
+  const [fats, setfats] = useState('');
+  const [trans_fat, settrans_fat] = useState('');
+  const [saturated_fat, setsaturated_fat] = useState('');
+  const [cholesterol, setcholesterol] = useState('');
+  const [proteins, setproteins] = useState('');
+  const [calcium, setcalcium] = useState('');
+
+
+  const [open, setOpen] = useState(false);
+  const [items, setItems] = useState([
+    {label: '음식', value: 'food'},
+    {label: '음료', value: 'drink'},
+    {label: '그 외', value: 'another'}
+  ]);
+
+
   //https://see-by-sound-api.run.goorm.site/upload?name={name}&description={description}
   const [data, setData] = useState(null);
 
   const getAPI = async () => {
-    if (name === '' || des === '') {
-      Alert.alert('입력 오류', '이름과 설명을 입력해주세요.');
+    if (name === '' || des === '' || price === '') {
+      Alert.alert('입력 오류', '이름과 설명, 가격을 입력해주세요.');
       return;
     }
-
-    // API 호출
-    axios.get('https://see-by-sound-api.run.goorm.site/upload?name='+name+'&description='+des)
-      .then(response => {
-        // 성공적인 응답을 받은 경우
-        // 데이터 저장
-        setData(response.data);
-        // Alert 표시
-        Alert.alert('API 호출 성공', `확인을 누른 후 NFC를 휴대폰 뒷면에 올려주세요.`);
-        NFCWriteURL(response.data)
-      })
-      .catch(error => {
-        // API 호출 중 에러가 발생한 경우
-        // Alert 표시
-        Alert.alert('API 호출 에러', 'API 호출 중 에러가 발생했습니다.');
-      });
+    else if (barcode === '' && name !== '' && des !== '' && price !== '') {
+      // API 호출
+      axios.get('https://see-by-sound-api.run.goorm.site/upload?name='+name+'&description='+des+"가격은 "+price+"입니다.")
+        .then(response => {
+          // 성공적인 응답을 받은 경우
+          // 데이터 저장
+          setData(response.data);
+          // Alert 표시
+          Alert.alert('API 호출 성공', `확인을 누른 후 NFC를 휴대폰 뒷면에 올려주세요.`);
+          NFCWriteURL(response.data)
+        })
+        .catch(error => {
+          // API 호출 중 에러가 발생한 경우
+          // Alert 표시
+          Alert.alert('API 호출 에러', 'API 호출 중 에러가 발생했습니다.');
+        });
+    }
+    else if (barcode !== '' && name !== '' && des !== '' && price !== '' && what === '' && kcal === '' && sodium === '' && carbohydrates === '' && sugars === '' && fats === '' && trans_fat === '' && saturated_fat === '' && cholesterol === '' && proteins === '' && calcium === '') {
+      Alert.alert('입력 오류', '종류나 영양정보를 입력해주세요.');
+    }
+    else {
+      // API 호출
+      axios.get(`https://see-by-sound-api.run.goorm.site/upload_food?barcode={barcode}&name={name}&description={des}&price={price}&what={what}&kcal={kcal}&sodium={sodium}&carbohydrates={carbohydrates}&sugars={sugars}&fats={fats}&trans_fat={trans_fat}&saturated_fat={saturated_fat}&cholesterol={cholesterol}&proteins={proteins}&calcium={calcium}`)
+        .then(response => {
+          // 성공적인 응답을 받은 경우
+          // 데이터 저장
+          setData(response.data);
+          // Alert 표시
+          Alert.alert('API 호출 성공', `확인을 누른 후 NFC를 휴대폰 뒷면에 올려주세요.`);
+          NFCWriteURL(response.data)
+        })
+        .catch(error => {
+          // API 호출 중 에러가 발생한 경우
+          // Alert 표시
+          Alert.alert('API 호출 에러', 'API 호출 중 에러가 발생했습니다.');
+        });
+    }
   };
 
   // 코드 나누기
@@ -81,27 +126,155 @@ export default function App({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.titleContainer}><Text style={styles.title}>추가</Text>
-        <View style={styles.inputContainer}>
+      <View style={styles.titleContainer}><Text style={styles.title}>음식 추가</Text>
+        <ScrollView style={styles.inputContainer}>
           <TextInput
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
             inputMode='text'
-            placeholder="물건의 이름을 입력해주세요."
+            placeholder="바코드 / (선택) 미작성시 종류, 영양정보 미포함"
+            onChangeText={newbarcode => setbarcode(newbarcode)}
+            defaultValue={barcode}
+          />
+          <TextInput
+            style={styles.input}
+            autoCapitalize='none'
+            enterKeyHint='done'
+            inputMode='text'
+            placeholder="이름"
             onChangeText={newname => setname(newname)}
             defaultValue={name}
           />
           <TextInput
-            style={styles.input2}
+            style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
             inputMode='text'
-            placeholder="물건의 이름을 설명해주세요."
+            placeholder="설명 / 은(는)으로 시작해 ~이다.로 끝내주세요."
             onChangeText={newdes => setdes(newdes)}
             defaultValue={des}
           />
-        </View>
+          <TextInput
+            style={styles.input}
+            autoCapitalize='none'
+            enterKeyHint='done'
+            inputMode='text'
+            placeholder="가격 / 1,000원, 2,000원 2+1 행사 상품"
+            onChangeText={newprice => setprice(newprice)}
+            defaultValue={price}
+          />
+          <View style={{ zIndex: 100 }}>
+            <DropDownPicker
+              style={styles.input}
+              open={open}
+              value={what}
+              items={items}
+              setOpen={setOpen}
+              setValue={setwhat}
+              setItems={setItems}
+              listMode="SCROLLVIEW"
+              nestedScrollEnabled={false}
+              closeOnBackPressed={true}
+              dropDownContainerStyle={{
+                width: 300,
+                margin: 12,
+                borderRadius: 20,
+              }}
+            />
+          </View>
+          <Text style={styles.inputtext}>입력할때 단위는 입력하지 말아주세요.</Text>
+          <TextInput
+            style={styles.input}
+            autoCapitalize='none'
+            enterKeyHint='done'
+            inputMode='text'
+            placeholder="칼로리 / kcal (선택)"
+            onChangeText={newkcal => setkcal(newkcal)}
+            defaultValue={kcal}
+          />
+          <TextInput
+            style={styles.input}
+            autoCapitalize='none'
+            enterKeyHint='done'
+            inputMode='text'
+            placeholder="나트륨 / mg (선택)"
+            onChangeText={newsodium => setsodium(newsodium)}
+            defaultValue={sodium}
+          />
+          <TextInput
+            style={styles.input}
+            autoCapitalize='none'
+            enterKeyHint='done'
+            inputMode='text'
+            placeholder="탄수화물 / g (선택)"
+            onChangeText={newcarbohydrates => setcarbohydrates(newcarbohydrates)}
+            defaultValue={carbohydrates}
+          />
+          <TextInput
+            style={styles.input}
+            autoCapitalize='none'
+            enterKeyHint='done'
+            inputMode='text'
+            placeholder="당류 / g (선택)"
+            onChangeText={newsugars => setsugars(newsugars)}
+            defaultValue={sugars}
+          />
+          <TextInput
+            style={styles.input}
+            autoCapitalize='none'
+            enterKeyHint='done'
+            inputMode='text'
+            placeholder="지방 / g (선택)"
+            onChangeText={newfats => setfats(newfats)}
+            defaultValue={fats}
+          />
+          <TextInput
+            style={styles.input}
+            autoCapitalize='none'
+            enterKeyHint='done'
+            inputMode='text'
+            placeholder="트랜스 지방 / g (선택)"
+            onChangeText={newtrans_fat => settrans_fat(newtrans_fat)}
+            defaultValue={trans_fat}
+          />
+          <TextInput
+            style={styles.input}
+            autoCapitalize='none'
+            enterKeyHint='done'
+            inputMode='text'
+            placeholder="포화 지방 / g (선택)"
+            onChangeText={newsaturated_fat => setsaturated_fat(newsaturated_fat)}
+            defaultValue={saturated_fat}
+          />
+          <TextInput
+            style={styles.input}
+            autoCapitalize='none'
+            enterKeyHint='done'
+            inputMode='text'
+            placeholder="콜레스테롤 / mg (선택)"
+            onChangeText={newcholesterol => setcholesterol(newcholesterol)}
+            defaultValue={cholesterol}
+          />
+          <TextInput
+            style={styles.input}
+            autoCapitalize='none'
+            enterKeyHint='done'
+            inputMode='text'
+            placeholder="단백질 / g (선택)"
+            onChangeText={newproteins => setproteins(newproteins)}
+            defaultValue={proteins}
+          />
+          <TextInput
+            style={styles.input}
+            autoCapitalize='none'
+            enterKeyHint='done'
+            inputMode='text'
+            placeholder="칼슘 / mg (선택)"
+            onChangeText={newcalcium => setcalcium(newcalcium)}
+            defaultValue={calcium}
+          />
+        </ScrollView>
       </View>
 
       <View style={styles.buttonContainer}>
@@ -156,12 +329,13 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginTop: 20,
-    justifyContent: 'center',
     alignContent: 'center',
-    alignItems: 'center',
     verticalAlign: 'middle',
     textAlign: 'center',
     textAlignVertical: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    zIndex : 100,
   },
   listContainer: {
     marginHorizontal: 20,
@@ -210,6 +384,10 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: '#fff',
     borderColor: 'transparent'
+  },
+  inputtext: {
+    width: 300,
+    marginHorizontal: 12,
   },
   input2: {
     height: 240,

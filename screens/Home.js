@@ -47,6 +47,8 @@ const styles = StyleSheet.create({
     verticalAlign: 'middle',
     textAlign: 'center',
     textAlignVertical: 'center',
+    flexDirection: 'row',
+
   },
   title: {
     fontSize: 50,
@@ -60,6 +62,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 100,
     padding: 10,
+    marginHorizontal: 5
   },
   buttonText: {
     width: '100%',
