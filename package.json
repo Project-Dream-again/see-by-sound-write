@@ -8,14 +8,12 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@react-native-firebase/app": "^18.1.0",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/stack": "^6.3.17",
     "axios": "^1.4.0",
     "expo": "^49.0.0",
     "expo-splash-screen": "~0.18.2",
     "expo-status-bar": "~1.4.4",
-    "firebase": "^9.23.0",
     "react": "18.2.0",
     "react-native": "0.71.8",
     "react-native-dropdown-picker": "^5.4.6",

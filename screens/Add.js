@@ -64,7 +64,7 @@ export default function App({ navigation }) {
     }
     else {
       // API 호출
-      axios.get(`https://see-by-sound-api.run.goorm.site/upload_food?barcode={barcode}&name={name}&description={des}&price={price}&what={what}&kcal={kcal}&sodium={sodium}&carbohydrates={carbohydrates}&sugars={sugars}&fats={fats}&trans_fat={trans_fat}&saturated_fat={saturated_fat}&cholesterol={cholesterol}&proteins={proteins}&calcium={calcium}`)
+      axios.get('https://see-by-sound-api.run.goorm.site/upload_food?barcode='+barcode+'&name='+name+'&description='+des+'&price='+price+'&what='+what+'&kcal='+kcal+'&sodium='+sodium+'&carbohydrates='+carbohydrates+'&sugars='+sugars+'&fats='+fats+'&trans_fat='+trans_fat+'&saturated_fat='+saturated_fat+'&cholesterol='+cholesterol+'&proteins='+proteins+'&calcium='+calcium)
         .then(response => {
           // 성공적인 응답을 받은 경우
           // 데이터 저장
