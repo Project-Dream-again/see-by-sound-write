@@ -5,6 +5,11 @@ import React, { useState, useEffect } from 'react';
 import NfcManager, { Ndef, NfcTech } from 'react-native-nfc-manager';
 import DropDownPicker from "react-native-dropdown-picker";
 import axios from 'axios';
+import { Dimensions } from 'react-native';
+
+// 화면 너비, 높이 구하는 방법
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const baseUrl = 'https://see-by-sound-api.run.goorm.site'
 
@@ -127,7 +132,7 @@ export default function App({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}><Text style={styles.title}>음식 추가</Text>
-        <ScrollView style={styles.inputContainer}>
+        <ScrollView contentContainerStyle={styles.inputContainer}>
           <TextInput
             style={styles.input}
             autoCapitalize='none'
@@ -188,7 +193,7 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            inputMode='text'
+            keyboardType='number-pad'
             placeholder="칼로리 / kcal (선택)"
             onChangeText={newkcal => setkcal(newkcal)}
             defaultValue={kcal}
@@ -197,7 +202,7 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            inputMode='text'
+            keyboardType='number-pad'
             placeholder="나트륨 / mg (선택)"
             onChangeText={newsodium => setsodium(newsodium)}
             defaultValue={sodium}
@@ -206,7 +211,7 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            inputMode='text'
+            keyboardType='number-pad'
             placeholder="탄수화물 / g (선택)"
             onChangeText={newcarbohydrates => setcarbohydrates(newcarbohydrates)}
             defaultValue={carbohydrates}
@@ -215,7 +220,7 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            inputMode='text'
+            keyboardType='number-pad'
             placeholder="당류 / g (선택)"
             onChangeText={newsugars => setsugars(newsugars)}
             defaultValue={sugars}
@@ -224,7 +229,7 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            inputMode='text'
+            keyboardType='number-pad'
             placeholder="지방 / g (선택)"
             onChangeText={newfats => setfats(newfats)}
             defaultValue={fats}
@@ -233,7 +238,7 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            inputMode='text'
+            keyboardType='number-pad'
             placeholder="트랜스 지방 / g (선택)"
             onChangeText={newtrans_fat => settrans_fat(newtrans_fat)}
             defaultValue={trans_fat}
@@ -242,7 +247,7 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            inputMode='text'
+            keyboardType='number-pad'
             placeholder="포화 지방 / g (선택)"
             onChangeText={newsaturated_fat => setsaturated_fat(newsaturated_fat)}
             defaultValue={saturated_fat}
@@ -251,7 +256,7 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            inputMode='text'
+            keyboardType='number-pad'
             placeholder="콜레스테롤 / mg (선택)"
             onChangeText={newcholesterol => setcholesterol(newcholesterol)}
             defaultValue={cholesterol}
@@ -260,7 +265,7 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            inputMode='text'
+            keyboardType='number-pad'
             placeholder="단백질 / g (선택)"
             onChangeText={newproteins => setproteins(newproteins)}
             defaultValue={proteins}
@@ -269,7 +274,7 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            inputMode='text'
+            keyboardType='number-pad'
             placeholder="칼슘 / mg (선택)"
             onChangeText={newcalcium => setcalcium(newcalcium)}
             defaultValue={calcium}
@@ -315,8 +320,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonContainer: {
-    width: 100,
     height: '0%',
+    width: 100,
     textAlign: 'center',
     textAlignVertical: 'center',
     justifyContent: 'center',
@@ -329,13 +334,13 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginTop: 20,
-    alignContent: 'center',
-    verticalAlign: 'middle',
+    width: windowWidth,
+    justifyContent: 'center',
+    alignItems: 'center',
     textAlign: 'center',
-    textAlignVertical: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    zIndex : 100,
+    zIndex: 100,
   },
   listContainer: {
     marginHorizontal: 20,
