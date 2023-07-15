@@ -137,7 +137,7 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            inputMode='text'
+            keyboardType='number-pad'
             placeholder="바코드 / (선택) 미작성시 종류, 영양정보 미포함"
             onChangeText={newbarcode => setbarcode(newbarcode)}
             defaultValue={barcode}
@@ -320,7 +320,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonContainer: {
-    height: '0%',
+    height: 70,
     width: 100,
     textAlign: 'center',
     textAlignVertical: 'center',
