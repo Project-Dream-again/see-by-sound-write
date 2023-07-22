@@ -193,7 +193,6 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            keyboardType='number-pad'
             placeholder="칼로리 / kcal (선택)"
             onChangeText={newkcal => setkcal(newkcal)}
             defaultValue={kcal}
@@ -202,7 +201,6 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            keyboardType='number-pad'
             placeholder="나트륨 / mg (선택)"
             onChangeText={newsodium => setsodium(newsodium)}
             defaultValue={sodium}
@@ -211,7 +209,6 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            keyboardType='number-pad'
             placeholder="탄수화물 / g (선택)"
             onChangeText={newcarbohydrates => setcarbohydrates(newcarbohydrates)}
             defaultValue={carbohydrates}
@@ -220,7 +217,6 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            keyboardType='number-pad'
             placeholder="당류 / g (선택)"
             onChangeText={newsugars => setsugars(newsugars)}
             defaultValue={sugars}
@@ -229,7 +225,6 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            keyboardType='number-pad'
             placeholder="지방 / g (선택)"
             onChangeText={newfats => setfats(newfats)}
             defaultValue={fats}
@@ -238,7 +233,6 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            keyboardType='number-pad'
             placeholder="트랜스 지방 / g (선택)"
             onChangeText={newtrans_fat => settrans_fat(newtrans_fat)}
             defaultValue={trans_fat}
@@ -247,7 +241,6 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            keyboardType='number-pad'
             placeholder="포화 지방 / g (선택)"
             onChangeText={newsaturated_fat => setsaturated_fat(newsaturated_fat)}
             defaultValue={saturated_fat}
@@ -256,7 +249,6 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            keyboardType='number-pad'
             placeholder="콜레스테롤 / mg (선택)"
             onChangeText={newcholesterol => setcholesterol(newcholesterol)}
             defaultValue={cholesterol}
@@ -265,7 +257,6 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            keyboardType='number-pad'
             placeholder="단백질 / g (선택)"
             onChangeText={newproteins => setproteins(newproteins)}
             defaultValue={proteins}
@@ -274,7 +265,6 @@ export default function App({ navigation }) {
             style={styles.input}
             autoCapitalize='none'
             enterKeyHint='done'
-            keyboardType='number-pad'
             placeholder="칼슘 / mg (선택)"
             onChangeText={newcalcium => setcalcium(newcalcium)}
             defaultValue={calcium}
